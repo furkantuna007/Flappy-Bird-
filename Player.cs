@@ -22,14 +22,7 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetAxis("Fire1") == 1f) {
-            playerRigidbody.velocity = new Vector2(playerRigidbody.velocity.x, jumpingSpeed);
-        }
-
-        //move horizontally
-        playerRigidbody.velocity = new Vector2(movingSpeed, playerRigidbody.velocity.y);
-
-        //keep the player within bounds
+         //keep the player within bounds
         if(transform.position.y > verticalLimit) {
             transform.position = new Vector3(transform.position.x, verticalLimit, transform.position.z);
             playerRigidbody .velocity = new Vector2(playerRigidbody.velocity.x, 0);
@@ -37,5 +30,20 @@ public class Player : MonoBehaviour
             transform.position = new Vector3(transform.position.x, -verticalLimit, transform.position.z);
             playerRigidbody .velocity = new Vector2(playerRigidbody.velocity.x, 0);
         }
+        if(Input.GetAxis("Fire1") == 1f) {
+            playerRigidbody.velocity = new Vector2(playerRigidbody.velocity.x, jumpingSpeed);
+        }
+
+        //move horizontally
+        playerRigidbody.velocity = new Vector2(movingSpeed, playerRigidbody.velocity.y);
+
+    
     }
+
+    void OnTriggerEnter2D (Collider2D otherCollider) {
+        if(otherCollider.gameObject.tag == "Obstacle") {
+            Destroy(gameObject);
+
+        }
+        }
 }

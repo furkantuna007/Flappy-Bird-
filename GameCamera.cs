@@ -23,7 +23,11 @@ public class GameCamera : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
+        if (target != null) {  
         cameraRigidbody.velocity = new Vector2(target.GetComponent<Rigidbody2D>().velocity.x, 0);
+        } else {
+            cameraRigidbody.velocity = Vector2.zero;
+        }
         
     }
 }

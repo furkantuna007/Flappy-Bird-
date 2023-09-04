@@ -83,6 +83,7 @@ void Update()
         obstacleTop.transform.SetParent(obstacleContainer.transform);
         obstacleTop.transform.position = new Vector2(x,holeSize/2+holeOffset);
 
+
         GameObject obstacleBottom = Instantiate(obstaclePrefab);
         obstacleBottom.transform.SetParent(obstacleContainer.transform);
         obstacleBottom.transform.position = new Vector2(x,-holeSize/2+holeOffset);
@@ -90,6 +91,8 @@ void Update()
         GameObject scoreArea = Instantiate(scoreAreaPrefab);
         scoreArea.transform.SetParent(obstacleContainer.transform);
         scoreArea.transform.position = new Vector2 (x+2,holeOffset-1);
+
+        obstacleTop.transform.localScale = new Vector3(obstacleTop.transform.localScale.x, -obstacleTop.transform.localScale.y, obstacleTop.transform.localScale.z);
     }
 
     void OnScore() {
